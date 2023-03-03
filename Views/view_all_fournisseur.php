@@ -1,3 +1,4 @@
+<?php if(!empty($fournisseur)) : ?>
 Résultat de votre recherche :
 <br />
 
@@ -33,4 +34,9 @@ Résultat de votre recherche :
             </tr>
         <?php endforeach; ?>
     </tbody>
+    <?php endif;?>
 </table>
+
+
+
+     

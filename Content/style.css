@@ -6,15 +6,20 @@ html{
 
 body{
 	width: 100%;
-	background-image: url('livre.png');
-	background-attachment: fixed;
-	background-repeat: no-repeat;
-	background-position: center;
+	background: url(9.jpg) no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, Helvetica, sans-serif;
 	position: absolute;
 	min-height:100%;
 	margin: 0 0 px; 
     }
 
+#controller, #action {
+	display: flex;
+	justify-content:center;
+	align-items: center;
+	flex-direction: column;
+}
 
 footer{
     position: absolute;
@@ -52,3 +57,59 @@ footer{
 	background-color: #0000005F;
 	color: white;
 }
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	padding: 5px; 
+  }
+  
+  
+.infoCoG {
+	text-align: right;
+  }
+  
+  .infoCoD {
+	text-align: left;
+	font-weight: 800 ;
+  }
+  
+  div .btn {
+	text-align: center;
+  }
+  
+  h2 {
+	text-align: center;
+	margin-top: 50px;
+  }
+  
+  footer {
+	text-align: center;
+	padding: 20px;
+	width: 100%;
+  }
+
+  a {
+	transition: all 250ms ease;
+	color: black;
+	text-decoration: none;
+  }
+  
+  #test::after {
+	  content: '';
+	  width: 0;
+	  height: 4px;
+	  border-radius: 10px;
+	  background-color: #ff6600;
+	  transition: width 0.4s;
+	  text-decoration: none;
+  }
+  
+  #test:hover::after {
+	  width: 100%;
+	  transition:  left to right 0.6s;
+	  transition: all 1s cubic-bezier(0.5, -3, 0.5, 2);
+	  transform: scaleX(1.1);
+	  transform-origin: left top ;
+	  text-decoration: none;
+  }
