@@ -43,14 +43,16 @@ class Controller_commande extends Controller
         $m = Model::get_model();
         $data = ["nom_fournisseur" => $m->get_nom_fournisseur(), "position" => 1];
         $this->render("nom_fournisseur", $data);
-        var_dump($data);
     }
 
     public function action_nom_fournisseur_list()
     {
-        $m = Model::get_model();
-        $data = ["nom_fournisseur_list" => $m->get_nom_fournisseur(), "position" => 2];
-        $this->render("nom_fournisseur", $data);
+        if (isset($_POST['nom_fournisseur'])) {
+            $idFourn = $_POST['nom_fournisseur'];
+            $m = Model::get_model();
+            $data = ["nom_fournisseur_list" => $m->get_nom_fournisseur_list($idFourn), $m->get_nom_fournisseur(), "position" => 2];
+            $this->render("nom_fournisseur", $data);
+        }
     }
 
     //& COMMANDE PAR titre_com 

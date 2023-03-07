@@ -452,7 +452,7 @@ footer {
 /* * Proprièté modifier lorsque la classe body est dark */
 Body.dark {
     color:#fff!important;
-    background: url(img/9\ -\ Copie.jpg) no-repeat center center fixed;
+    background: url(/Content/img/9\ -\ Copie.jpg) no-repeat center center fixed;
     background-size: cover;
   }
 

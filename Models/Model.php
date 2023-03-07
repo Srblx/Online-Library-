@@ -398,38 +398,30 @@ class Model
 
     public function get_nom_fournisseur()
     {
-        // Préparer la requête SQL pour sélectionner tous les livres dans l'ordre alphabétique par titre
         $r = $this->bd->prepare("SELECT c.numero_commande, c.auteur_livre, c.titre_livre, c.date_achat, c.prix_achat, c.nb_exemplaire, f.raison_social
         FROM commande c
-        INNER JOIN fornisseur f ON c.id_fournisseur = f.raison_social;");
+        INNER JOIN fornisseur f ON c.id_fournisseur = f.id;");
 
-        // Exécuter la requête
         $r->execute();
 
-        // Récupérer tous les résultats sous forme d'un tableau d'objets
         return $r->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function get_nom_fournisseur_list()
+    public function get_nom_fournisseur_list($idFourn = null)
     {
-        // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $idFourn = $_POST['nom_fournisseur'];
-
-        // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM commande WHERE id_fournisseur = '$idFourn'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
-
-        // Exécuter la requête
+        $r = $this->bd->prepare("SELECT c.prix_achat,c.date_achat,c.numero_commande,c.nb_exemplaire,f.raison_social,l.titre,l.nomAuteur,l.isbn FROM commande c
+        INNER join livre l ON c.id_livre = l.id 
+        INNER JOIN fornisseur f ON c.id_fournisseur = f.id  ");
+        // $r->bindValue(':idFourn', $idFourn, PDO::PARAM_STR);
         $r->execute();
 
-        // Récupérer tous les résultats sous forme d'un tableau d'objets
         return $r->fetchAll(PDO::FETCH_OBJ);
     }
 
     public function get_all_titre_com()
     {
         // Préparer la requête SQL avec une jointure entre les tables commande et fornisseur
-        $r = $this->bd->prepare("SELECT c.numero_commande, c.id_client, l.nomAuteur, l.titre, c.rsociale_fournisseur, c.date_achat, c.prix_achat, c.nb_exemplaire 
+        $r = $this->bd->prepare("SELECT  c.auteur_livre, 
         FROM commande c 
         INNER JOIN livre l ON c.id_livre = l.id");
 
