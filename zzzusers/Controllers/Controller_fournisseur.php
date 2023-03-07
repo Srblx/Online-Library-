@@ -23,7 +23,7 @@ class Controller_fournisseur extends Controller
 
     //* L'action "all_localite" récupère tous les livres via le modèle et les passe à la vue "all_localite"
     public function action_all_localite()
-  
+
     {
         $m = Model::get_model();
         $data = ["localite" => $m->get_all_localite(), "position" => 1];
@@ -64,17 +64,5 @@ class Controller_fournisseur extends Controller
         $m = Model::get_model();
         $data = ["raison_social_list" => $m->get_all_raison_social_list(), "raison_social" => $m->get_all_raison_social(),  "position" => 2];
         $this->render("all_raison_social", $data);
-    }
-
-    public function action_add_fournisseur()
-    {
-        if(isset($_POST['submit'])){
-            $m = Model::get_model();
-            $m->get_add_fournisseur();
-            $data = ["fournisseur" => $m->get_all_fournisseur()];
-            $this->render("all_fournisseur", $data);
-            } else {
-                $this->render("add_fournisseur");
-            }  
     }
 }

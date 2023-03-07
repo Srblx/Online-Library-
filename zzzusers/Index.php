@@ -4,20 +4,23 @@
 <head>
     <meta charset="utf-8">
 
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="Content/style.css">
-    <script src="Content/js/dark.js" defer></script>
-    <script src="Content/js/app.js" defer></script>
-    <script src="Content/js/slide.js" defer></script>
+    <script src="js/dark.js" defer></script>
+    <script src="js/app.js" defer></script>
 
 
     <title>Index</title>
 </head>
 
-<body>
+<body class="ligth">
 
     <!--//! Voir le fichier exel Samy/CourSurMVC/Exel -->
     <?php
@@ -60,9 +63,9 @@
     }
 
     //* Inclure le fichier de pied de page
-    echo "<b id='controller'>" . "Controller : " . $_GET['controller'] . "<br>" . "<b>";
-    echo "<b id='action'>" . "action : " . $_GET['action'] . "<br>" . "<body>";
     require_once 'Utils/footer.php';
+    echo "<b id='controller'>" . "Controller : " . $_GET['controller'] . "<br>" . "<b>";
+    echo "<b id='action'>" . "action : " . $_GET['action'] . "<br>" . "<b>";
     ?>
 </body>
 

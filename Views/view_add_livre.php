@@ -1,4 +1,4 @@
-<form action="#" method="post" id="formAdd">
+<form action="?controller=livre&action=add_livre" method="POST" id="addForm">
         <fieldset>
             <legend id="legend"><b>Ajouter un livre</b></legend>
             <label for="isbn">ISBN :</label>
@@ -23,6 +23,6 @@
             <input type="text" name="prix" id="prix">
             <label for="langue">Langue : </label>
             <input type="text" name="langue" id="langue">
-            <input type="submit" value="Ajouter" id="submit">
+            <input type="submit" value="Ajouter" id="submit" name="submit">
         </fieldset>
     </form>
