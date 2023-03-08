@@ -47,10 +47,11 @@ class Controller_commande extends Controller
 
     public function action_nom_fournisseur_list()
     {
+        $id = $_POST['nom_fournisseur'];
+
         if (isset($_POST['nom_fournisseur'])) {
-            $idFourn = $_POST['nom_fournisseur'];
             $m = Model::get_model();
-            $data = ["nom_fournisseur_list" => $m->get_nom_fournisseur_list($idFourn), $m->get_nom_fournisseur(), "position" => 2];
+            $data = ["nom_fournisseur_list" => $m->get_nom_fournisseur_list($id), "nom_fournisseur" => $m->get_nom_fournisseur(), "position" => 2];
             $this->render("nom_fournisseur", $data);
         }
     }
@@ -60,13 +61,39 @@ class Controller_commande extends Controller
     {
         $m = Model::get_model();
         $data = ["titre_com" => $m->get_all_titre_com(), "position" => 1];
-        $this->render("nom_titre_com", $data);
+        $this->render("all_titre_com", $data);
     }
 
     public function action_all_titre_com_list()
     {
-        $m = Model::get_model();
-        $data = ["titre_com_list" => $m->get_all_titre_com(), "position" => 2];
-        $this->render("all_titre_com", $data);
+        $id = $_POST['titre_com'];
+        // var_dump($id);
+        if (isset($_POST['titre_com'])) {
+            $m = Model::get_model();
+            $data = ["titre_com_list" => $m->get_all_titre_com_list($id), "titre_com" => $m->get_all_titre_com(), "position" => 2];
+            $this->render("all_titre_com", $data);
+        }
     }
+
+    public function action_add_commande() 
+    {
+        $m = Model::get_model();
+        $data = ["add_titre" => $m->get_add_titre(), "add_rsocial" => $m->get_add_rsociale()];
+        $this->render("add_commande", $data);
+    }
+
+    public function action_add_commande_bd()
+    {
+        $m = Model::get_model();
+        // Récupérer les valeurs soumises
+        $id_livre = $_POST["add_titre"];
+        $id_fournisseur = $_POST["add_rsociale"];
+        $date = date("Y-m-d"); // Date de soumission du formulaire
+        $qte = $_POST["qte"];
+        var_dump($date);
+         
+        $data = ["test" => $m->get_add_commande($id_livre,$id_fournisseur,$date,$qte)];
+    }
+  
+
 }

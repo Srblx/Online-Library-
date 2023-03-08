@@ -1,9 +1,9 @@
-    <form action="?controller=fournisseur&action=all_all_titre_com_list" method="POST" id="addForm">
+    <form action="?controller=commande&action=all_titre_com_list" method="POST" id="addForm">
         <fieldset>
             <legend>Recherche par titre de livre</legend>
             <select name="titre_com" id="titre_com">
                 <?php foreach ($titre_com as $t) : ?>
-                    <option value="<?= $t->titre ?>"><?= $t->titre ?></option>
+                    <option value="<?= $t->id_livre ?>"><?= $t->titre ?></option>
                 <?php endforeach ?>
                 <input type="submit" value="Rechercher">
         </fieldset>
@@ -29,10 +29,10 @@
                 <?php foreach ($titre_com_list as $t) : ?>
                     <tr>
                         <td class="td"> <?= $t->numero_commande ?> </td>
-                        <td class="td"> <?= $t->id_client ?> </td>
-                        <td class="td"> <?= $t->auteur_livre ?> </td>
-                        <td class="td"> <?= $t->titre_livre ?> </td>
-                        <td class="td"> <?= $t->rsociale_fournisseur ?> </td>
+                        <td class="td"> <?= $t->isbn ?> </td>
+                        <td class="td"> <?= $t->nomAuteur ?> </td>
+                        <td class="td"> <?= $t->titre ?> </td>
+                        <td class="td"> <?= $t->raison_social ?> </td>
                         <td class="td"> <?= $t->date_achat ?> </td>
                         <td class="td"> <?= $t->prix_achat ?> </td>
                         <td class="td"> <?= $t->nb_exemplaire ?> </td>

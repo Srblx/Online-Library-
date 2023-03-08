@@ -358,7 +358,9 @@ class Model
     public function get_all_commande()
     {
         // Préparer la requête SQL pour sélectionner tous les livres dans l'ordre alphabétique par titre
-        $r = $this->bd->prepare("SELECT * FROM commande");
+        $r = $this->bd->prepare("SELECT * FROM commande c 
+        INNER join livre l ON c.id_livre = l.id 
+        INNER JOIN fornisseur f ON c.id_fournisseur = f.id");
 
         // Exécuter la requête
         $r->execute();
@@ -398,7 +400,7 @@ class Model
 
     public function get_nom_fournisseur()
     {
-        $r = $this->bd->prepare("SELECT c.numero_commande, c.auteur_livre, c.titre_livre, c.date_achat, c.prix_achat, c.nb_exemplaire, f.raison_social
+        $r = $this->bd->prepare("SELECT c.id_fournisseur, f.raison_social
         FROM commande c
         INNER JOIN fornisseur f ON c.id_fournisseur = f.id;");
 
@@ -407,11 +409,12 @@ class Model
         return $r->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function get_nom_fournisseur_list($idFourn = null)
+    public function get_nom_fournisseur_list($id)
     {
-        $r = $this->bd->prepare("SELECT c.prix_achat,c.date_achat,c.numero_commande,c.nb_exemplaire,f.raison_social,l.titre,l.nomAuteur,l.isbn FROM commande c
+        $r = $this->bd->prepare("SELECT c.prix_achat,c.date_achat,c.numero_commande,c.nb_exemplaire,f.raison_social,l.titre,l.nomAuteur
+        ,l.isbn FROM commande c
         INNER join livre l ON c.id_livre = l.id 
-        INNER JOIN fornisseur f ON c.id_fournisseur = f.id  ");
+        INNER JOIN fornisseur f ON c.id_fournisseur = f.id WHERE c.id_fournisseur = $id ");
         // $r->bindValue(':idFourn', $idFourn, PDO::PARAM_STR);
         $r->execute();
 
@@ -421,7 +424,7 @@ class Model
     public function get_all_titre_com()
     {
         // Préparer la requête SQL avec une jointure entre les tables commande et fornisseur
-        $r = $this->bd->prepare("SELECT  c.auteur_livre, 
+        $r = $this->bd->prepare("SELECT  c.id_livre, l.titre 
         FROM commande c 
         INNER JOIN livre l ON c.id_livre = l.id");
 
@@ -432,14 +435,13 @@ class Model
         return $r->fetchAll(PDO::FETCH_OBJ);
     }
 
-    public function get_all_titre_com_list()
+    public function get_all_titre_com_list($id)
     {
-        // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $titre_com = $_POST['titre'];
-
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM commande WHERE titre_livre = :titre_com");
-        $r->bindValue(':titre_com', $titre_com, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT c.prix_achat,c.date_achat,c.numero_commande,c.nb_exemplaire,f.raison_social,l.titre,l.nomAuteur,l.isbn 
+        FROM commande c
+        INNER join livre l ON c.id_livre = l.id 
+        INNER JOIN fornisseur f ON c.id_fournisseur = f.id WHERE c.id_livre = $id ");
 
         // Exécuter la requête
         $r->execute();
@@ -447,4 +449,48 @@ class Model
         // Récupérer tous les résultats sous forme d'un tableau d'objets
         return $r->fetchAll(PDO::FETCH_OBJ);
     }
+
+    
+    
+    public function get_add_titre()
+    {
+        // Préparer la requête SQL avec une jointure entre les tables commande et fornisseur
+        $r = $this->bd->prepare("SELECT id, titre FROM livre order by titre");
+
+// Exécuter la requête
+$r->execute();
+
+// Récupérer tous les résultats sous forme d'un tableau d'objets
+return $r->fetchAll(PDO::FETCH_OBJ);
 }
+
+public function get_add_rsociale()
+{
+                // Préparer la requête SQL avec une jointure entre les tables commande et fornisseur
+                $r = $this->bd->prepare("SELECT  id, raison_social FROM fornisseur ");
+        
+        // Exécuter la requête
+        $r->execute();
+        
+        // Récupérer tous les résultats sous forme d'un tableau d'objets
+        return $r->fetchAll(PDO::FETCH_OBJ);
+    }
+    
+    public function get_add_commande($id_livre,$id_fournisseur,$date,$qte) 
+    {      
+        // Vérifier si le formulaire a été soumis
+        if (isset($_POST['submit'])) {
+           
+               
+        // Insérer les valeurs dans la base de données
+        $r = $this->bd->prepare("INSERT INTO commande (id_livre, id_fournisseur, date_achat, nb_exemplaire) VALUES ($id_livre,$id_fournisseur,$date,$qte)");
+        return $r->execute();
+    
+    
+        // Rediriger vers la page de liste des commandes
+        // header("Location: ?controller=commande&action=all_commande");
+        // exit();
+        }
+    }
+}
+

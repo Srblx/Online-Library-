@@ -20,7 +20,6 @@
         <thead>
             <tr>
                 <th>Numero de commande</th>
-                <th>Nom client</th>
                 <th>Auteur livre</th>
                 <th>Titre livre</th>
                 <th>Raison sociale fournisseur</th>
@@ -33,7 +32,6 @@
             <?php foreach ($date_list as $d) : ?>
                 <tr>
                     <td class="td"> <?= $d->numero_commande ?> </td>
-                    <td class="td"> <?= $d->id_client ?> </td>
                     <td class="td"> <?= $d->auteur_livre ?> </td>
                     <td class="td"> <?= $d->titre_livre ?> </td>
                     <td class="td"> <?= $d->rsociale_fournisseur ?> </td>

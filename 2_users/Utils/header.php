@@ -48,12 +48,6 @@ if (!isset($_SESSION['start_time'])) {
     <option href="?controller=fournisseur&action=all_pays">Par pays</option>
   </select>
 
-  <select value="Commandes">
-    <option href="?controller=commande&action=all_commande">Toutes les commandes</option>
-    <option href="?controller=commande&action=all_nom_client">Par nom client</option>
-    <option href="?controller=commande&action=all_nom_fournisseur">Par nom fournisseur</option>
-    <option href="?controller=commande&action=all_date">Par date</option>
-  </select>
 </div>
 
 <h2 id="title">Bienvenue sur le site de consultation de livres</h2>

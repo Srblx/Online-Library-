@@ -58,6 +58,7 @@ if (!isset($_SESSION['start_time'])) {
     <option href="?controller=commande&action=all_titre_com">Par titre livre</option>
     <option href="?controller=commande&action=all_nom_fournisseur">Par nom fournisseur</option>
     <option href="?controller=commande&action=all_date">Par date</option>
+    <option href="?controller=commande&action=add_commande">Inserer un commande</option>
   </select>
 </div>
 
