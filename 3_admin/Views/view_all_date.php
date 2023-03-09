@@ -31,10 +31,10 @@
         <tbody>
             <?php foreach ($date_list as $d) : ?>
                 <tr>
-                    <td class="td"> <?= $d->numero_commande ?> </td>
-                    <td class="td"> <?= $d->auteur_livre ?> </td>
-                    <td class="td"> <?= $d->titre_livre ?> </td>
-                    <td class="td"> <?= $d->rsociale_fournisseur ?> </td>
+                    <td class="td"> <?= $d->isbn ?> </td>
+                    <td class="td"> <?= $d->nomAuteur ?> </td>
+                    <td class="td"> <?= $d->titre ?> </td>
+                    <td class="td"> <?= $d->raison_social ?> </td>
                     <td class="td"> <?= $d->date_achat ?> </td>
                     <td class="td"> <?= $d->prix_achat ?> </td>
                     <td class="td"> <?= $d->nb_exemplaire ?> </td>

@@ -1,31 +1,12 @@
-<div id="slideshow">
-	<div id="slideshow-container">
-		<a href="?controller=livre&action=all_livres">
-			<img src="Content/img/1.jpg" alt="Image 1" class="slide">
-			<img src="Content/img/2.jpg" alt="Image 2" class="slide">
-			<img src="Content/img/3.jpg" alt="Image 3" class="slide">
-			<img src="Content/img/4.jpg" alt="Image 4" class="slide">
-			<img src="Content/img/5.jpg" alt="Image 5" class="slide">
-			<img src="Content/img/6.jpg" alt="Image 6" class="slide">
-			<img src="Content/img/7.jpg" alt="Image 7" class="slide">
-		</a>
-	</div>
-</div>
-
-
-
-<style>
-
-</style>
-
-<script>
-	var slides = document.querySelectorAll('#slideshow .slide');
-	var currentSlide = 0;
-	var slideInterval = setInterval(nextSlide, 5000);
-
-	function nextSlide() {
-		slides[currentSlide].classList.remove('active');
-		currentSlide = (currentSlide + 1) % slides.length;
-		slides[currentSlide].classList.add('active');
-	}
-</script>
+<div class="form">
+        <!-- form -->
+        <form action="?controller=connexion&action=connexion" method="post">
+            <h4>Entrez vos identifiants pour vous connectez : </h4>
+            <label for="mail" class="label">Adresse mail <sup>*</sup>:</label>
+            <input type="email" name="mail" id="mail" placeholder="*****@mail.fr" required>
+            <label for="mdp" class="label">Mot de passe <sup>*</sup>:</label>
+            <input type="password" name="mdp" id="mdp" placeholder="***************" required>
+            <label for="connect"><input type="submit" value="Se connecter" id="send" name="submit"></label>
+            <a href="?controller=connexion&action=sign_up" class="link" id="inscrip">Inscrivez-vous</a>
+        </form>
+    </div>

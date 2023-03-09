@@ -1,14 +1,14 @@
 <form action="?controller=fournisseur&action=all_raison_social_list" method="POST" id="addForm">
     <fieldset>
         <legend>Recherche par raison sociale</legend>
-        <select name="raison_social" id="raison_social">
+    <select name="raison_social" id="raison_social">
             <?php foreach ($raison_social as $rs) : ?>
                 <option value="<?= $rs->raison_social ?>"><?= $rs->raison_social ?></option>
             <?php endforeach ?>
             <input type="submit" value="Rechercher">
-            </fielset>
         </select>
-
+    </fielset>
+</form>
 
         <?php if ($position !== 1) : ?>
             <table class='table '>

@@ -1,441 +1,182 @@
-html{
-    position: relative;
-    min-height: 100%;
-    }
-
-	/* Centrage de tous les éléments au centre de la page */
-	body {
-	width: 100%;
-	background: url(img/9.jpg) no-repeat center center fixed;
-    background-size: cover;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 100vh;
-	overflow-x: hidden;
-  }
-  /* Styles pour centrer les éléments */
-fieldset {
-	background-color: rgba(0, 0, 0, 0.474);
-	border-radius: 15px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	flex-direction: column;
-	padding: 20%;
-	
-}
-  
-  /* Styles pour les boutons */  
-  .btn {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 16px;
+/* Couleur de fond de la page */
+body {
+	background: url(img/9.jpg);
   }
   
-  .btn a {
-	position: relative;
-	color: #000000;
-	text-decoration: none;
-	font-size: 18px;
-	padding: 8px 16px;
+  .bandeau {
+	  display: flex;
+	  justify-content: center;
+	  align-items: center;
+	  height: 100px;
+	  background-color: #24292e;
+	  color: #fff;
   }
   
-  .btn a:hover:after {
-	content: "";
-	position: absolute;
-	bottom: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 0;
-	height: 2px;
-	transition: width 0.3s ease-in-out;
+  .fa-solid.fa-bookmark,
+  .fa-sharp.fa-solid.fa-book {
+	font-size: 40px;
   }
   
-  .btn a:hover:before {
-	content: "";
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translateX(-50%);
-	width: 0;
-	height: 2px;
-	transition: width 0.3s ease-in-out;
-  }
-
-  a #test:hover {
-	color: #0366D6;
-  }
-  
-  .btn a:focus:after,
-  .btn a:focus:before {
-	width: calc(100% - 32px);
-  }
-  
-  /* Styles pour les selects */
-  #qte, select {
-	appearance: none;
-	padding: 8px 16px;
-	font-size: 18px;
-	border: none;
-	color: #000000;
-	cursor: pointer;
-	border-radius: 5px;
-	margin-left: 3px;
-	color: rgb(0, 0, 0);
-	margin: 10px;
-  }
-
-  #selectAcc1, #selectAcc2, #selectAcc3 {
-	background-color: #9a643ab9;
-	font-weight: 500;
-  }
-  
-  select:hover,
-  select:focus {
-	outline: none;
-  }
-  
-  select option {
-	background-color: #000;
-  }
-  
-  select:hover option,
-  select:focus option {
-	background-color: #222;
-  }
-  
-  /* Styles pour la page d'accueil */
-  #titre {
-	margin-bottom: 32px;
-  }
-  
-  #title {
+  h1 {
 	text-align: center;
-	font-size: 24px;
-	margin-top: 32px;
+	font-size: 36px;
   }
   
-  .main {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 32px;
+  /* Style du formulaire de connexion */
+  .form {
+	background-color: rgba(0, 0, 0, 0.285);
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 5px;
+	border: 2px solid #24292e;
+	padding: 40px;
+	animation: form-entry 0.5s ease-in-out;
   }
   
-  form {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-  }
-
+  /* Style des champs de saisie */
   label {
-	color: white;
-  }
-  
- b {
-	color: black;
- }
-  
-  legend {
-	font-size: 18px;
-	font-weight: bold;
-	margin-bottom: 16px;
-	color: black;
-  }
-
-  i {
-	margin-right: 15px;
-  }
-  
-  input[type="submit"] {
-	background-color: #fff;
-	color: #000;
-	border-radius: 7px;
-	font-size: 18px;
-	padding: 8px 16px;
-	border: none;
-	cursor: pointer;
-  }
-
-  input{
-	margin: 10px;
-  }
-  
-  table {
-	border-collapse: collapse;
-	width: 100%;
-	margin-top: 32px;
-  }
-
-  th, td {
-	padding: 8px;
-	text-align: center;
-	border: 1px solid #ddd;
-  }
-  
-  th {
-	background-color: #000000c6;
-	font-weight: bold;
-	color: white;
-  }
-
-  td {
-	background-color: rgba(0, 0, 0, 0.605);
-	color: white;
-  }
-  
-  td:hover {
-	background-color: #0366d6;
-	color: black;
-  }
-  /* Animations */
-  .btn a:hover:before,
-  .btn a:focus:before,
-  .btn a:hover:after,
-  .btn a:focus:after {
-	width: 100%;
-	transition: width 0.3s ease-in-out;
-  }
-  
-  .btn a:hover:before {
-	width: 100%;
-	height: 100%;
-  }
-  
-  .btn a:hover:after {
-	width: 100%;
-	height: 100%;
-  }
-  
-  .btn a:focus:before,
-  .btn a:focus:after {
-	width: 100%;
-	height: 100%;
-  }
-
-  
-#deco{
 	display: block;
-	transition: all 0.5s;
-	font-weight: 500;
+	margin-top: 20px;
+	font-size: 18px;
+	color: #24292e;
+	text-align: left;
   }
   
-  #deco:hover {
-	color: red;
-	transform: scale(0.8);
-	text-decoration: none;
-  }
-
-  #timer {
-	transition: all 0.3s;
-  }
-  
-  /* Styles pour les selects */
-  select option:hover,
-  select option:focus {
-	background-color: #444;
-	color: #fff;
-  }
-  
-  select:focus {
-	border: 1px solid #fff;
-	outline: none;
-  }
-  
-  select:focus option {
-	background-color: #222;
-	color: #fff;
-  }
-
-#btnDark {
-	background-color: #555;
-	padding: 5px;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	border-radius: 5px;
-}
-
-  
-  /* Styles pour la page d'accueil */
   input[type="text"],
   input[type="password"],
-  textarea {
-	background-color: transparent;
-	border: none;
-	border-bottom: 2px solid #fff;
-	color: #fff;
-	margin: 16px;
-	padding: 8px;
-	font-size: 18px;
-	background-color: #0366D6;
+  #send,
+  input[type="email"]{
+	width: 100%;
+	padding: 10px;
 	border-radius: 5px;
-	display: flex;
-	flex-direction: column;
-  }
-
-  
-  input[type="text"]:hover,
-  input[type="text"]:focus,
-  input[type="password"]:hover,
-  input[type="password"]:focus,
-  textarea:hover,
-  textarea:focus {
-	outline: none;
-	border-color: #555;
-  }
-  
-  input[type="submit"] {
-	background-color: #0366d6;
-	color: #fff;
+	border: 3px solid #24292e;
 	font-size: 18px;
-	padding: 8px 16px;
+	transition: all 0.3s ease-in-out;
+	box-sizing: border-box;
+  }
+  #reset{
+	width: 70px;
+	padding: 5px;
+	border-radius: 5px;
+	border: 3px solid #24292e;
+	font-size: 18px;
+	transition: all 0.3s ease-in-out;
+	box-sizing: border-box;
+  }
+  input[type="text"]:focus,
+  input[type="password"]:focus,
+  input[type="email"]:focus {
+	border-color: #0366d6;
+	box-shadow: 0 0 10px #0366d6;
+  }
+  
+  /* Style du bouton de connexion */
+  #send {
+	background-color: #24292e;
+	color: #fff;
 	border: none;
 	cursor: pointer;
-  }
-  
-  input[type="submit"]:hover,
-  input[type="submit"]:focus {
-	background-color: #fff;
-	color: #000;
-  }
-  
-  /* Zoom image slide */
-  
-  .slider-container {
-	display: flex;
-	justify-content: center;
-
-}
-
-#slideshow {
-	width: 50%;
-	max-width: 800px;
-	/* ajuster selon votre besoin */
-	height: 400px;
-	overflow: hidden;
-	position: relative;
-	margin: 50px;
-}
-
-.slide {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	position: absolute;
-	opacity: 0;
-	transition: opacity 1s ease-in-out;
-	border-radius: 10%;
-}
-
-.slide.active {
-	opacity: 1;
-}
-
-img{
-    -webkit-filter: grayscale(100%); 
-    filter: grayscale(100%);
-}
-  /* Compteur de temps  */
-
-  #timer {
-	font-family: Georgia, 'Times New Roman', Times, serif;
-	font-size: large;
-	color: rgba(0, 0, 0, 0.782);
-  
-  }
-  
-  #timer:hover {
-	color: #ff6600;
-  }
-
-
-  /* Style the scrollbar */
-::-webkit-scrollbar {
-	width: 12px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
-	background: #fffefe;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
-  background: #0366d6;
-  border-radius: 6px;
-  }
-  
-  /* Handle on hover */
-  ::-webkit-scrollbar-thumb:hover {
-  background: rgb(125, 125, 125);
-  }
-
-  sup {
-	color: red;
-	}
- 
-/* footer  */
-footer {
-	
-	bottom: 0;
-	left: 0;
-	right: 0;
-	text-align: center;
+	margin-top: 20px;
 	padding: 10px;
+	border-radius: 5px;
   }
-
   
-  @keyframes blink {
-	0% {
+  #send:hover {
+	background-color: #0366d6;
+	border-color: #0366d6;
+  }
+  
+  /* Style des liens "Mot de passe oublié" et "Inscrivez-vous" */
+  .link {
+	display: inline-block;
+	/* margin-top: 20px; */
+	padding: 10px 20px;
+	background-color: #24292e;
+	color: #fff;
+	border-radius: 5px;
+	transition: all 0.3s ease-in-out;
+	text-decoration: none;
+	margin-top: 5px;
+  }
+  
+  #inscrip:hover {
+	color: #03d611;
+  }
+  
+  #mdpOublie:hover {
+	color: red;
+  }
+  
+  #retour:hover {
+	background-color: #0366d6;
+  }
+  
+  /* Animation du formulaire */
+  @keyframes form-entry {
+	from {
+	  opacity: 0;
+	  transform: translateY(-50px);
+	}
+	to {
 	  opacity: 1;
-	}
-	50% {
-	  opacity: 0.5;
-	}
-	100% {
-	  opacity: 1;
+	  transform: translateY(0);
 	}
   }
   
-  /* Animation pour la table */
-  table {
-	animation: slidein 1s ease-in-out;
-  }
+  /* Responsive */
+  @media only screen and (max-width: 580px) {
+	.form {
+	  width: 80%;
+	  max-width: none;
+	}
   
-
-  @media only screen and (max-width: 1060px) {
-	table {
-		width: 100%;
-		margin-bottom: 15px;
-		overflow-y: hidden;
-		-ms-overflow-style: -ms-autohiding-scrollbar;
-		border: 1px solid #ddd;
-	  }
-
-	table td,
-	table th {
-	  display: block;
-	  width: 100%;
+	label {
 	  text-align: center;
 	}
   
-	table th {
-	  display: none;
+	h4 {
+	  font-size: 20px;
+	  margin-bottom: 20px;
+	}
+  
+	input[type="text"],
+	input[type="password"],
+	#send,
+	input[type="mail"]{
+	  font-size: 16px;
+	}
+  
+	a {
+	  font-size: 16px;
 	}
   }
   
-  @media only screen and (min-width: 1061px) and (max-width: 1550px) {
-	table {
-	  margin: 0 auto;
-	}
+  sup {
+	color: red;
   }
-
-
-  /* ! Partie dark mode  */
-
+  footer {
+	text-align: center;
+  }
+  
+  .fieldset {
+	background-color: rgba(0, 0, 0, 0.285);
+	width: 60%;
+	max-width: 500px;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 5px;
+	border: 2px solid #24292e;
+	padding: 40px;
+	animation: form-entry 0.5s ease-in-out;
+  }
+  
+  i {
+	margin: 5px;
+  }
+  
+  /* * Style dark mode  */
   .btnDark {
     width: 40px;
     height: 40px;
@@ -452,8 +193,14 @@ footer {
 /* * Proprièté modifier lorsque la classe body est dark */
 Body.dark {
     color:#fff!important;
-    background: url(/Content/img/9\ -\ Copie.jpg) no-repeat center center fixed;
+    background: url(img/9\ -\ Copie.jpg) no-repeat center center fixed;
     background-size: cover;
+	
+
+  }
+
+  body.dark .bandeau {
+    background: white;
   }
 
   body.dark i {
@@ -468,21 +215,9 @@ body.dark .label{
 body.dark #btnDark {
     background: #fff;
     color: #333;
+	border: 3px solid black;
 
 }
-
-body.dark table th {
-	background-color: rgba(255, 255, 255, 0.377);
-}
-
-body.dark table td {
-	background-color: rgba(255, 255, 255, 0.251);
-}
-
-body.dark table td:hover {
-	background-color: #0366d6;
-}
-
 
 body.dark #deco {
     color: #fff;
@@ -532,21 +267,3 @@ body.dark img{
     filter: grayscale(0%);
 }
 
-
-body.dark table tr:nth-child(even) {
-	background-color: rgb(141, 141, 141);
-  }
-  
-  body.dark #timer {
-	color: white;
-  }
-  
-  body.dark input[type="submit"]{
-	background-color: white;
-	color: black;
-  }
-  
-  body.dark input[type="submit"]:hover{
-	background-color: #0366d6;
-	color: black;
-  }

@@ -6,7 +6,7 @@
 
 
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" type="text/css" href="Content/style.css">
     <script src="Content/js/dark.js" defer></script>
@@ -18,7 +18,7 @@
 </head>
 
 <body>
-<?php session_start(); ?>
+
     <!--//! Voir le fichier exel Samy/CourSurMVC/Exel -->
     <?php
     //* Inclure les fichiers nécessaires
@@ -28,7 +28,7 @@
     require_once 'Utils/header.php';
 
     //* Tableau des contrôleurs disponibles
-    $controllers = ["home", "connexion"];
+    $controllers = ["home", "livre", "fournisseur", "commande"];
 
     //* Nom du contrôleur par défaut
     $controller_default = "home";
@@ -42,13 +42,11 @@
         $nom_controller = $controller_default;
     }
 
-    // if(isset($_SESSION['role'] === 1)){
     //* Construire le nom de la classe correspondante au contrôleur
     $nom_classe = "Controller_" . $nom_controller;
 
     //* Construire le nom du fichier contenant la classe correspondante au contrôleur
     $nom_fichier = "Controllers/" . $nom_classe . ".php";
-    // }
 
     //* Vérifier si le fichier existe
     if (file_exists($nom_fichier)) {

@@ -31,8 +31,10 @@ class Controller_commande extends Controller
 
     public function action_all_date_list()
     {
+        $id = $_POST['date'];
+
         $m = Model::get_model();
-        $data = ["date_list" => $m->get_all_date_list(), "date" => $m->get_all_date(),  "position" => 2];
+        $data = ["date_list" => $m->get_all_date_list($id), "date" => $m->get_all_date(),  "position" => 2];
         $this->render("all_date", $data);
     }
 
@@ -75,7 +77,7 @@ class Controller_commande extends Controller
         }
     }
 
-    public function action_add_commande() 
+    public function action_add_commande()
     {
         $m = Model::get_model();
         $data = ["add_titre" => $m->get_add_titre(), "add_rsocial" => $m->get_add_rsociale()];
@@ -88,12 +90,14 @@ class Controller_commande extends Controller
         // Récupérer les valeurs soumises
         $id_livre = $_POST["add_titre"];
         $id_fournisseur = $_POST["add_rsociale"];
-        $date = date("Y-m-d"); // Date de soumission du formulaire
+        $date = $_POST['date'];
+        $prix = $_POST['prix'];
+
+        // $date = date("Y-m-d"); // Date de soumission du formulaire
         $qte = $_POST["qte"];
         var_dump($date);
-         
-        $data = ["test" => $m->get_add_commande($id_livre,$id_fournisseur,$date,$qte)];
-    }
-  
 
+        $data = ["test" => $m->get_add_commande($id_livre, $id_fournisseur, $date, $prix, $qte)];
+        // $this->render('all_commande');
+    }
 }
