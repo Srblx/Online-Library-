@@ -1,5 +1,7 @@
+<?php if (session_status() != PHP_SESSION_ACTIVE) {
+  session_start();
+} ?>
 <?php
-session_start();
 
 // Vérifier si le temps de début de session est enregistré dans la variable $_SESSION
 if (!isset($_SESSION['start_time'])) {
@@ -21,12 +23,14 @@ if (!isset($_SESSION['start_time'])) {
 
 <div class="btnDark" id="btnDark"><i class="fa-solid fa-moon"></i> </div>
 <nav>
+
   <div class="infoCoG">
 
     <a href="../?controller=home&action=home" id="deco" onclick="return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');">Déconnexion</a>
   </div>
   <div class="infoCoD">
     <?= "Bonjour " ?>
+    <?= '<b>' . $_SESSION['prenom'] . ' ' . $_SESSION['nom'] . '</b>'; ?>
     <br>
     <span id="timer"></span>
   </div>

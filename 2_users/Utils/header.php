@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 // Vérifier si le temps de début de session est enregistré dans la variable $_SESSION
 if (!isset($_SESSION['start_time'])) {
@@ -21,12 +21,14 @@ if (!isset($_SESSION['start_time'])) {
 
 <div class="btnDark" id="btnDark"><i class="fa-solid fa-moon"></i> </div>
 <nav>
+
   <div class="infoCoG">
 
-    <a href="../PhpTraitement/deconnexion.php" id="deco" onclick="return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');">Déconnexion</a>
+    <a href="../?controller=home&action=home" id="deco" onclick="return confirm('Êtes-vous sûr de vouloir vous déconnecter ?');">Déconnexion</a>
   </div>
   <div class="infoCoD">
     <?= "Bonjour " ?>
+    <?= '<b>' . $_SESSION['prenom'] . ' ' . $_SESSION['nom'] . '</b>'; ?>
     <br>
     <span id="timer"></span>
   </div>
@@ -35,23 +37,46 @@ if (!isset($_SESSION['start_time'])) {
 <div class="btn">
   <a href="?controller=home&action=home" id="test" onclick="alert('Vous allez être rediriger sur la page d\'accueil !');">Accueil</a>
   <i class="fa-brands fa-readme" style="color: #0366d6;"></i>
-  <select value="#">
+  <select value="Livre" id="selectAcc1">
+    <option value="livre">Nos Livres</option>
     <option href="?controller=livre&action=all_livres">Tous les livres</option>
     <option href="?controller=livre&action=all_titre">Par titre</option>
     <option href="?controller=livre&action=all_auteur">Par auteur</option>
     <option href="?controller=livre&action=all_editeur">Par éditeur</option>
   </select>
-  <select value="Fournisseurs">
+  <select value="Fournisseurs" id="selectAcc2">
+    <option value="fournisseur">Nos Fournisseurs</option>
     <option href="?controller=fournisseur&action=all_fournisseur">Tous les fournisseurs</option>
     <option href="?controller=fournisseur&action=all_raison_social">Par raison sociale</option>
     <option href="?controller=fournisseur&action=all_localite">Par localité</option>
     <option href="?controller=fournisseur&action=all_pays">Par pays</option>
   </select>
 
+
 </div>
 
 <h2 id="title">Bienvenue sur le site de consultation de livres</h2>
 <script>
+  // Récupération de tous les select
+  const selects = document.querySelectorAll('select');
+
+  // Ajout d'un écouteur d'événements pour chacun des select
+  selects.forEach(select => {
+    select.addEventListener('change', function() {
+      // Récupération de la valeur de l'option sélectionnée
+      const selectedOption = select.options[select.selectedIndex].getAttribute('href');
+
+      // Validation du choix de l'utilisateur
+      if (selectedOption) {
+        // Redirection vers l'URL de l'option sélectionnée
+        window.location.href = selectedOption;
+      }
+    });
+  });
+
+
+
+
   // Récupération de l'heure de départ
   let startTime = Date.parse('<?php echo $_SESSION['start_time'] ?>');
 

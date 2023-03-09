@@ -1,7 +1,7 @@
 <form action="?controller=livre&action=all_titre_list" method="POST" id="addForm">
     <fieldset>
         <legend>Recherche par titre</legend>
-        <select name="titre" id="titres">
+        <select name="titre" id="titre">
             <?php foreach ($titre as $t) : ?>
                 <option value="<?= $t->titre ?>"><?= $t->titre ?></option>
             <?php endforeach ?>

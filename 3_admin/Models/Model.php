@@ -487,7 +487,9 @@ class Model
 
 
             // Insérer les valeurs dans la base de données
-            $r = $this->bd->prepare("INSERT INTO commande (id_livre, id_fournisseur, date_achat, prix_achat, nb_exemplaire) VALUES ($id_livre,$id_fournisseur,$date,$prix,$qte)");
+            $r = $this->bd->prepare("INSERT INTO commande (id_livre, id_fournisseur, date_achat, prix_achat, nb_exemplaire) 
+            VALUES ($id_livre,$id_fournisseur,$date,$prix,$qte)");
+            
             return $r->execute();
 
 

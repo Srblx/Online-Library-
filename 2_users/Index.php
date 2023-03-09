@@ -22,7 +22,9 @@
 </head>
 
 <body>
-
+    <?php if (session_status() != PHP_SESSION_ACTIVE) {
+        session_start();
+    } ?>
     <!--//! Voir le fichier exel Samy/CourSurMVC/Exel -->
     <?php
     //* Inclure les fichiers nécessaires
@@ -65,8 +67,8 @@
 
     //* Inclure le fichier de pied de page
     require_once 'Utils/footer.php';
-    echo "<b id='controller'>" . "Controller : " . $_GET['controller'] . "<br>" . "<b>";
-    echo "<b id='action'>" . "action : " . $_GET['action'] . "<br>" . "<b>";
+    // echo "<b id='controller'>" . "Controller : " . $_GET['controller'] . "<br>" . "<b>";
+    // echo "<b id='action'>" . "action : " . $_GET['action'] . "<br>" . "<b>";
     ?>
 </body>
 

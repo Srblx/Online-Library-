@@ -15,7 +15,7 @@ class Controller_home extends Controller
 	$params = session_get_cookie_params();
 
 	// Expire le cookie en le réglant sur hier
-	setcookie(session_name(), '', strtotime('-1 day'), $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+	// setcookie(session_name(), '', strtotime('-1 day'), $params['path'], $params['domain'], $params['secure'], $params['httponly']);
 
 	// Détruit toutes les variables d'une session
 	session_unset();

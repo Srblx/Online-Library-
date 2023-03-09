@@ -74,7 +74,7 @@ fieldset {
   }
   
   /* Styles pour les selects */
-  select {
+  #qte, select {
 	appearance: none;
 	padding: 8px 16px;
 	font-size: 18px;
@@ -137,6 +137,10 @@ fieldset {
  b {
 	color: black;
  }
+
+ .infoCoD {
+	font-size: large;
+ }
   
   legend {
 	font-size: 18px;
@@ -167,10 +171,12 @@ fieldset {
 	border-collapse: collapse;
 	width: 100%;
 	margin-top: 32px;
+	margin-right: 10px;
+	
   }
 
   th, td {
-	padding: 8px;
+	padding: 5px 3px 5px 3px;
 	text-align: center;
 	border: 1px solid #ddd;
   }
@@ -428,20 +434,19 @@ footer {
   }
   
   @media only screen and (min-width: 1061px) and (max-width: 1550px) {
-	table {
-	  margin: 0 auto;
-	}
+	/* table {
+	  margin: 0 auto; 
+	} */
   }
 
 
   /* ! Partie dark mode  */
 
   .btnDark {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 20px;
     border-radius: 30%;
-    background-color: #000000cc;
-    border: 2px solid white;
+    background-color: #000000;
     color: #fff;
     display: flex;
     justify-content: center;
@@ -452,7 +457,7 @@ footer {
 /* * Proprièté modifier lorsque la classe body est dark */
 Body.dark {
     color:#fff!important;
-    background: url(/Content/img/9\ -\ Copie.jpg) no-repeat center center fixed;
+    background: url(/3_admin/Content/img/10.jpg) no-repeat center center fixed;
     background-size: cover;
   }
 

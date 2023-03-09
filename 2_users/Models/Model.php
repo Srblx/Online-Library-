@@ -116,33 +116,34 @@ class Model
         return $r->fetchAll(PDO::FETCH_OBJ);
     }
     //!TITRE
-    public function get_all_titre()
-    {
-        // Préparer la requête SQL pour sélectionner tous les livres dans l'ordre alphabétique par titre
-        $r = $this->bd->prepare("SELECT DISTINCT titre FROM livre");
-
-        // Exécuter la requête
-        $r->execute();
-
-        // Récupérer tous les résultats sous forme d'un tableau d'objets
-        return $r->fetchAll(PDO::FETCH_OBJ);
-    }
-
-    public function get_all_titre_list()
-    {
-        // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $titre = $_POST['titre'];
-
-        // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM livre WHERE titre = '$titre'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
-
-        // Exécuter la requête
-        $r->execute();
-
-        // Récupérer tous les résultats sous forme d'un tableau d'objets
-        return $r->fetchAll(PDO::FETCH_OBJ);
-    }
+       //!TITRE
+       public function get_all_titre()
+       {
+           // Préparer la requête SQL pour sélectionner tous les livres dans l'ordre alphabétique par titre
+           $r = $this->bd->prepare("SELECT DISTINCT titre FROM livre");
+   
+           // Exécuter la requête
+           $r->execute();
+   
+           // Récupérer tous les résultats sous forme d'un tableau d'objets
+           return $r->fetchAll(PDO::FETCH_OBJ);
+       }
+   
+       public function get_all_titre_list()
+       {
+           // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
+           $titre = $_POST['titre'];
+   
+           // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
+           $r = $this->bd->prepare("SELECT * FROM livre WHERE titre = '$titre'");
+           // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+   
+           // Exécuter la requête
+           $r->execute();
+   
+           // Récupérer tous les résultats sous forme d'un tableau d'objets
+           return $r->fetchAll(PDO::FETCH_OBJ);
+       }
 
     //!AUTEUR
     public function get_all_auteur()

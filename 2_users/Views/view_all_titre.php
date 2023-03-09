@@ -1,48 +1,43 @@
+<form action="?controller=commande&action=all_titre_com_list" method="POST" id="addForm">
+    <fieldset>
+        <legend>Recherche par titre de livre</legend>
+        <select name="titre_com" id="titre_com">
+            <?php foreach ($titre_com as $t) : ?>
+                <option value="<?= $t->id_livre ?>"><?= $t->titre ?></option>
+            <?php endforeach ?>
+            <input type="submit" value="Rechercher">
+    </fieldset>
+    </select>
+</form>
 
-    <form action="?controller=livre&action=all_titre_list" method="POST" id="addForm">
-    <fieldset>  
-        <legend>Recherche par titre</legend>      
-    <select name="titre" id="titres">
-            <?php foreach ($titre as $t): ?>
-                    <option value="<?= $t->titre ?>"><?= $t->titre ?></option>
-                <?php endforeach ?>
-                <input type="submit" value="Rechercher">
-                </fieldset>
-            </select>
-        </form>
-            
-        <?php if($position !== 1) : ?>
-<table class='table'>
-    <thead>
-        <tr>
-            <th>ISBN</th>
-            <th>Titre</th>
-            <th>Thème</th>
-            <th>Nombre de pages</th>
-            <th>Format</th>
-            <th>Auteur</th>
-            <th>Editeur</th>
-            <th>Année édition</th>
-            <th>Prix</th>
-            <th>Langue</th>
-        </tr>
-    </thead>
-    <tbody>
-        <?php foreach ($titre_list as $t) : ?>
+<?php if ($position !== 1) : ?>
+
+    <table class='table'>
+        <thead>
             <tr>
-                <td class="td"> <?= $t->isbn ?> </td>
-                <td class="td"> <?= $t->titre ?> </td>
-                <td class="td"> <?= $t->theme ?> </td>
-                <td class="td"> <?= $t->nombreDePage ?> </td>
-                <td class="td"> <?= $t->format ?> </td>
-                <td class="td"> <?= $t->nomAuteur ?> <?= $t->prenomAuteur ?></td>
-                <td class="td"> <?= $t->editeur ?> </td>
-                <td class="td"> <?= $t->anneeEdition ?> </td>
-                <td class="td"> <?= $t->prix ?> </td>
-                <td class="td"> <?= $t->langue ?> </td>
+                <th>Numero de commande</th>
+                <th>Nom client</th>
+                <th>Auteur livre</th>
+                <th>Titre livre</th>
+                <th>Raison sociale fournisseur</th>
+                <th>date achat</th>
+                <th>prix achat </th>
+                <th>Nombre d'exemplaire</th>
             </tr>
-        <?php endforeach; ?>
-    </tbody>
-
- 
-<?php endif; ?>
+        </thead>
+        <tbody>
+            <?php foreach ($titre_com_list as $t) : ?>
+                <tr>
+                    <td class="td"> <?= $t->numero_commande ?> </td>
+                    <td class="td"> <?= $t->isbn ?> </td>
+                    <td class="td"> <?= $t->nomAuteur ?> </td>
+                    <td class="td"> <?= $t->titre ?> </td>
+                    <td class="td"> <?= $t->raison_social ?> </td>
+                    <td class="td"> <?= $t->date_achat ?> </td>
+                    <td class="td"> <?= $t->prix_achat ?> </td>
+                    <td class="td"> <?= $t->nb_exemplaire ?> </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    <?php endif ?>
+    </table>

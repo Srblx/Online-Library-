@@ -13,18 +13,18 @@
         <?php if ($position !== 1) : ?>
             <table class='table '>
                 <thead>
-                    <tr>
-                        <th>code_fournisseur</th>
-                        <th>raison_social</th>
-                        <th>rue_fournisseur</th>
-                        <th>code_postal</th>
-                        <th>localite</th>
-                        <th>pays</th>
-                        <th>tel_fournisseur</th>
-                        <th>url_fournisseur</th>
-                        <th>mail_fournisseur</th>
-                        <th>fax</th>
-                    </tr>
+                <tr>
+            <th>Code fournisseur</th>
+            <th>Raison Social</th>
+            <th>Adresse </th>
+            <th>code postal</th>
+            <th>Localite</th>
+            <th>Pays</th>
+            <th>Téléphone</th>
+            <th>Site</th>
+            <th>Mail</th>
+            <th>Fax</th>
+        </tr>
                 </thead>
                 <tbody>
                     <?php foreach ($raison_social_list as $rs) : ?>
