@@ -77,8 +77,8 @@ class Model
         $localite = htmlspecialchars($_POST['localite']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE localite = '$localite'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE localite = :localite");
+        $r->bindValue(':localite', $localite, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
