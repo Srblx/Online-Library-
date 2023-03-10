@@ -285,6 +285,19 @@ fieldset {
 	flex-direction: column;
   }
 
+  input[type="date"], 
+  input[type="number"]{
+	background-color: transparent;
+	border: none;
+	border-bottom: 2px solid #fff;
+	color: #fff;
+	margin: 16px;
+	padding: 8px;
+	font-size: 18px;
+	background-color: #0366D6;
+	border-radius: 5px;
+  }
+
   
   input[type="text"]:hover,
   input[type="text"]:focus,

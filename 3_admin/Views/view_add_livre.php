@@ -18,9 +18,9 @@
             <label for="editeur">Editeur :</label>
             <input type="text" name="editeur" id="editeur">
             <label for="anneeEdition">Année d'édition :</label>
-            <input type="text" name="anneeEdition" id="anneeEdition">
+            <input type="date" name="anneeEdition" id="anneeEdition">
             <label for="prix">Prix :</label>
-            <input type="text" name="prix" id="prix">
+            <input type="number" step="0.01" min="0"  name="prix" id="prix">
             <label for="langue">Langue : </label>
             <input type="text" name="langue" id="langue">
             <input type="submit" value="Ajouter" id="submit" name="submit">

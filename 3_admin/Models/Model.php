@@ -232,25 +232,23 @@ class Model
     }
 
     //!ADD LIVRE
-    public function get_add_livre()
-    {
-        //    var_dump($_POST);
-        $isbn = htmlspecialchars($_POST['isbn']);
-        $titre = htmlspecialchars($_POST['titre']);
-        $theme = htmlspecialchars($_POST['theme']);
-        $nbPage = htmlspecialchars($_POST['nbPage']);
-        $format = htmlspecialchars($_POST['format']);
-        $nomAuteur = htmlspecialchars($_POST['nomAuteur']);
-        $prenomAuteur = htmlspecialchars($_POST['prenomAuteur']);
-        $editeur = htmlspecialchars($_POST['editeur']);
-        $anneeEdition = htmlspecialchars($_POST['anneeEdition']);
-        $prix = htmlspecialchars($_POST['prix']);
-        $langue = htmlspecialchars($_POST['langue']);
-
+    public function get_add_livre() {
+        $isbn = !empty($_POST['isbn']) ? htmlspecialchars($_POST['isbn']) : 0;
+        $titre = !empty($_POST['titre']) ? htmlspecialchars($_POST['titre']) : '';
+        $theme = !empty($_POST['theme']) ? htmlspecialchars($_POST['theme']) : 'undefined';
+        $nbPage = !empty($_POST['nbPage']) ? htmlspecialchars($_POST['nbPage']) : 0;
+        $format = !empty($_POST['format']) ? htmlspecialchars($_POST['format']) : 'undefined';
+        $nomAuteur = !empty($_POST['nomAuteur']) ? htmlspecialchars($_POST['nomAuteur']) : '';
+        $prenomAuteur = !empty($_POST['prenomAuteur']) ? htmlspecialchars($_POST['prenomAuteur']) : '';
+        $editeur = !empty($_POST['editeur']) ? htmlspecialchars($_POST['editeur']) : 'undefined';
+        $anneeEdition = !empty($_POST['anneeEdition']) ? htmlspecialchars($_POST['anneeEdition']) : '0000-00-00';
+        $prix = !empty($_POST['prix']) ? htmlspecialchars($_POST['prix']) : 0;
+        $langue = !empty($_POST['langue']) ? htmlspecialchars($_POST['langue']) : 'undefined';
+    
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $stmt = $this->bd->prepare("INSERT INTO livre (isbn,titre,theme,nombreDePage,format,nomAuteur,PrenomAuteur,editeur,anneeEdition,prix,langue)
-    VALUES (:isbn, :titre, :theme, :nbPage, :format, :nomAuteur, :prenomAuteur, :editeur, :anneeEdition, :prix, :langue)");
-
+            VALUES (:isbn, :titre, :theme, :nbPage, :format, :nomAuteur, :prenomAuteur, :editeur, :anneeEdition, :prix, :langue)");
+    
         // Lier les variables aux marqueurs
         $stmt->bindParam(":isbn", $isbn);
         $stmt->bindParam(":titre", $titre);
@@ -263,7 +261,7 @@ class Model
         $stmt->bindParam(":anneeEdition", $anneeEdition);
         $stmt->bindParam(":prix", $prix);
         $stmt->bindParam(":langue", $langue);
-
+    
         // Exécuter la requête
         $stmt->execute();
     }
