@@ -88,10 +88,10 @@ class Controller_commande extends Controller
     {
         $m = Model::get_model();
         // Récupérer les valeurs soumises
-        $id_livre = $_POST["add_titre"];
-        $id_fournisseur = $_POST["add_rsociale"];
-        $date = $_POST['date'];
-        $prix = $_POST['prix'];
+        $id_livre = htmlspecialchars($_POST["add_titre"]);
+        $id_fournisseur = htmlspecialchars($_POST["add_rsociale"]);
+        $date = htmlspecialchars($_POST['date']);
+        $prix = htmlspecialchars($_POST['prix']);
 
         // $date = date("Y-m-d"); // Date de soumission du formulaire
         $qte = $_POST["qte"];

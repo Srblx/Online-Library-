@@ -74,11 +74,11 @@ class Model
     public function get_all_localite_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $localite = $_POST['localite'];
+        $localite = htmlspecialchars($_POST['localite']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE localite = '$localite'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE localite = :localite");
+        $r->bindValue(':localite', $localite, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -103,11 +103,11 @@ class Model
     public function get_all_pays_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $pays = $_POST['pays'];
+        $pays = htmlspecialchars($_POST['pays']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE pays = '$pays'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE pays = :pays");
+        $r->bindValue(':pays', $pays, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -131,11 +131,11 @@ class Model
     public function get_all_titre_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $titre = $_POST['titre'];
+        $titre = htmlspecialchars($_POST['titre']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM livre WHERE titre = '$titre'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM livre WHERE titre = :titre");
+        $r->bindValue(':titre', $titre, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -161,11 +161,11 @@ class Model
     public function get_all_auteur_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $auteur = $_POST['nomAuteur'];
+        $auteur = htmlspecialchars($_POST['nomAuteur']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM livre WHERE nomAuteur = '$auteur'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM livre WHERE nomAuteur = :auteur");
+        $r->bindValue(':auteur', $auteur, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -190,11 +190,11 @@ class Model
     public function get_all_editeur_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $editeur = $_POST['editeur'];
+        $editeur = htmlspecialchars($_POST['editeur']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM livre WHERE editeur = '$editeur'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM livre WHERE editeur = :editeur");
+        $r->bindValue(':editeur', $editeur, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -219,11 +219,11 @@ class Model
     public function get_all_raison_social_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $raison_social = $_POST['raison_social'];
+        $raison_social = htmlspecialchars($_POST['raison_social']);
         //!L'erreur se produit car la requête SQL est interprétée comme si 'Marseille' était le nom de la colonne plutôt que la valeur de la colonne 'localite'. Cela peut se produire si la variable $localite dans la requête n'est pas correctement délimitée avec des guillemets simples ou doubles.
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE raison_social = '$raison_social'");
-
+        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE raison_social = :raison_social");
+        $r->bindValue(':raison_social', $raison_social, PDO::PARAM_STR);
         // Exécuter la requête
         $r->execute();
 
@@ -235,17 +235,17 @@ class Model
     public function get_add_livre()
     {
         //    var_dump($_POST);
-        $isbn = $_POST['isbn'];
-        $titre = $_POST['titre'];
-        $theme = $_POST['theme'];
-        $nbPage = $_POST['nbPage'];
-        $format = $_POST['format'];
-        $nomAuteur = $_POST['nomAuteur'];
-        $prenomAuteur = $_POST['prenomAuteur'];
-        $editeur = $_POST['editeur'];
-        $anneeEdition = $_POST['anneeEdition'];
-        $prix = $_POST['prix'];
-        $langue = $_POST['langue'];
+        $isbn = htmlspecialchars($_POST['isbn']);
+        $titre = htmlspecialchars($_POST['titre']);
+        $theme = htmlspecialchars($_POST['theme']);
+        $nbPage = htmlspecialchars($_POST['nbPage']);
+        $format = htmlspecialchars($_POST['format']);
+        $nomAuteur = htmlspecialchars($_POST['nomAuteur']);
+        $prenomAuteur = htmlspecialchars($_POST['prenomAuteur']);
+        $editeur = htmlspecialchars($_POST['editeur']);
+        $anneeEdition = htmlspecialchars($_POST['anneeEdition']);
+        $prix = htmlspecialchars($_POST['prix']);
+        $langue = htmlspecialchars($_POST['langue']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $stmt = $this->bd->prepare("INSERT INTO livre (isbn,titre,theme,nombreDePage,format,nomAuteur,PrenomAuteur,editeur,anneeEdition,prix,langue)
@@ -271,16 +271,16 @@ class Model
     // //! ADD FOURNISSEUR
     public function get_add_fournisseur()
     {
-        $codeFournisseur = $_POST['code_fournisseur'];
-        $raisonSociale = $_POST['raison_social'];
-        $rueFournisseur = $_POST['rue_fournisseur'];
-        $codePostal = $_POST['code_postal'];
-        $localite = $_POST['localite'];
-        $pays = $_POST['pays'];
-        $telFournisseur = $_POST['tel_fournisseur'];
-        $urlInternet = $_POST['url_fournisseur'];
-        $mailFournisseur = $_POST['mail_fournisseur'];
-        $faxFournisseur = $_POST['fax_fournisseur'];
+        $codeFournisseur = htmlspecialchars($_POST['code_fournisseur']);
+        $raisonSociale = htmlspecialchars($_POST['raison_social']);
+        $rueFournisseur = htmlspecialchars($_POST['rue_fournisseur']);
+        $codePostal = htmlspecialchars($_POST['code_postal']);
+        $localite = htmlspecialchars($_POST['localite']);
+        $pays = htmlspecialchars($_POST['pays']);
+        $telFournisseur = htmlspecialchars($_POST['tel_fournisseur']);
+        $urlInternet = htmlspecialchars($_POST['url_fournisseur']);
+        $mailFournisseur = htmlspecialchars($_POST['mail_fournisseur']);
+        $faxFournisseur = htmlspecialchars($_POST['fax_fournisseur']);
 
         $stmt = $this->bd->prepare("INSERT INTO fornisseur (code_fournisseur, raison_social, rue_fournisseur, code_postal, localite, pays, tel_fournisseur, url_fournisseur, mail_fournisseur, fax_fournisseur)
     VALUES (:codeFournisseur, :raisonSocial, :rueFournisseur, :codePostal, :localite, :pays, :telFournisseur, :urlInternet, :mailFournisseur, :faxFournisseur)");
@@ -489,7 +489,7 @@ class Model
             // Insérer les valeurs dans la base de données
             $r = $this->bd->prepare("INSERT INTO commande (id_livre, id_fournisseur, date_achat, prix_achat, nb_exemplaire) 
             VALUES ($id_livre,$id_fournisseur,$date,$prix,$qte)");
-            
+
             return $r->execute();
 
 

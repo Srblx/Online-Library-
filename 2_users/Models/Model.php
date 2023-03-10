@@ -74,7 +74,7 @@ class Model
     public function get_all_localite_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $localite = $_POST['localite'];
+        $localite = htmlspecialchars($_POST['localite']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE localite = '$localite'");
@@ -103,11 +103,11 @@ class Model
     public function get_all_pays_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $pays = $_POST['pays'];
+        $pays = htmlspecialchars($_POST['pays']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE pays = '$pays'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE pays = :pays");
+        $r->bindValue(':pays', $pays, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -115,35 +115,35 @@ class Model
         // Récupérer tous les résultats sous forme d'un tableau d'objets
         return $r->fetchAll(PDO::FETCH_OBJ);
     }
+
     //!TITRE
-       //!TITRE
-       public function get_all_titre()
-       {
-           // Préparer la requête SQL pour sélectionner tous les livres dans l'ordre alphabétique par titre
-           $r = $this->bd->prepare("SELECT DISTINCT titre FROM livre");
-   
-           // Exécuter la requête
-           $r->execute();
-   
-           // Récupérer tous les résultats sous forme d'un tableau d'objets
-           return $r->fetchAll(PDO::FETCH_OBJ);
-       }
-   
-       public function get_all_titre_list()
-       {
-           // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-           $titre = $_POST['titre'];
-   
-           // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-           $r = $this->bd->prepare("SELECT * FROM livre WHERE titre = '$titre'");
-           // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
-   
-           // Exécuter la requête
-           $r->execute();
-   
-           // Récupérer tous les résultats sous forme d'un tableau d'objets
-           return $r->fetchAll(PDO::FETCH_OBJ);
-       }
+    public function get_all_titre()
+    {
+        // Préparer la requête SQL pour sélectionner tous les livres dans l'ordre alphabétique par titre
+        $r = $this->bd->prepare("SELECT DISTINCT titre FROM livre");
+
+        // Exécuter la requête
+        $r->execute();
+
+        // Récupérer tous les résultats sous forme d'un tableau d'objets
+        return $r->fetchAll(PDO::FETCH_OBJ);
+    }
+
+    public function get_all_titre_list()
+    {
+        // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
+        $titre = htmlspecialchars($_POST['titre']);
+
+        // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
+        $r = $this->bd->prepare("SELECT * FROM livre WHERE titre = :titre");
+        $r->bindValue(':titre', $titre, PDO::PARAM_STR);
+
+        // Exécuter la requête
+        $r->execute();
+
+        // Récupérer tous les résultats sous forme d'un tableau d'objets
+        return $r->fetchAll(PDO::FETCH_OBJ);
+    }
 
     //!AUTEUR
     public function get_all_auteur()
@@ -162,11 +162,11 @@ class Model
     public function get_all_auteur_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $auteur = $_POST['nomAuteur'];
+        $nomAuteur =  htmlspecialchars($_POST['nomAuteur']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM livre WHERE nomAuteur = '$auteur'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM livre WHERE nomAuteur = :nomAuteur");
+        $r->bindValue(':nomAuteur', $nomAuteur, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -191,11 +191,11 @@ class Model
     public function get_all_editeur_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $editeur = $_POST['editeur'];
+        $editeur = htmlspecialchars($_POST['editeur']);
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM livre WHERE editeur = '$editeur'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        $r = $this->bd->prepare("SELECT * FROM livre WHERE editeur = :editeur");
+        $r->bindValue(':editeur', $editeur, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -219,11 +219,12 @@ class Model
 
     public function get_all_raison_social_list()
     {
-        // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $raison_social = $_POST['raison_social'];
-        //!L'erreur se produit car la requête SQL est interprétée comme si 'Marseille' était le nom de la colonne plutôt que la valeur de la colonne 'localite'. Cela peut se produire si la variable $localite dans la requête n'est pas correctement délimitée avec des guillemets simples ou doubles.
+        // Récupérer la valeur de raison sociale choisie par l'utilisateur depuis le formulaire
+        $raison_social = htmlspecialchars($_POST['raison_social']);
+
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
-        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE raison_social = '$raison_social'");
+        $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE raison_social = :raison_social");
+        $r->bindValue(':raison_social', $raison_social, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -231,5 +232,4 @@ class Model
         // Récupérer tous les résultats sous forme d'un tableau d'objets
         return $r->fetchAll(PDO::FETCH_OBJ);
     }
-
 }

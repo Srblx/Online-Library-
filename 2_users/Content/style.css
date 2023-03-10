@@ -88,7 +88,7 @@ fieldset {
   }
 
   #selectAcc1, #selectAcc2, #selectAcc3 {
-	background-color: #9a643ab9;
+	background-color: #0072f4c2;
 	font-weight: 500;
   }
   
@@ -457,7 +457,7 @@ footer {
 /* * Proprièté modifier lorsque la classe body est dark */
 Body.dark {
     color:#fff!important;
-    background: url(/3_admin/Content/img/10.jpg) no-repeat center center fixed;
+    background: url(/2_users/Content/img/11.jpg) no-repeat center center fixed;
     background-size: cover;
   }
 

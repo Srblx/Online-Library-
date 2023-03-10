@@ -109,30 +109,4 @@ class Controller_livre extends Controller
         $data = ['livres' => $livres];
         $this->render("all_livres", $data);
     }
-
-
-
-    // public function action_uptdate()
-    // {
-    // // Vérifier si des données ont été soumises via POST
-    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    //     $id = $_GET['id'];
-    //     $m = Model::get_model();
-
-    //     // Appeler la méthode update_livre() du modèle pour mettre à jour les informations du livre dans la base de données
-    //     $m->update_livre($_POST['isbn'], $_POST['titre'], $_POST['theme'], $_POST['nbPage'], $_POST['format'], $_POST['nomAuteur'], $_POST['prenomAuteur'], $_POST['editeur'], $_POST['anneeEdition'], $_POST['prix'], $_POST['langue']);
-
-    //     // Rediriger l'utilisateur vers la liste de tous les livres
-    //     //! header("Location: index.php?action=all_livre");
-    //     exit();
-    // } else {
-    //     // Si aucune donnée n'a été soumise, afficher le formulaire de modification de livre avec les informations actuelles du livre
-    //     $id = $_GET['id'];
-    //     $m = Model::get_model();
-    //     $row = $m->get_livre_by_id($id);
-    //     $data = ["update_livre" => $row];
-    //     $this->render("update_livre", $data);
-    // }
-    // }
-
 }

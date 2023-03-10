@@ -74,7 +74,10 @@ fieldset {
   }
   
   /* Styles pour les selects */
-  #qte, select {
+  #qte, 
+  select, 
+  #prix, 
+  #date {
 	appearance: none;
 	padding: 8px 16px;
 	font-size: 18px;
@@ -88,7 +91,7 @@ fieldset {
   }
 
   #selectAcc1, #selectAcc2, #selectAcc3 {
-	background-color: #9a643ab9;
+	background-color: #0072f3d4;
 	font-weight: 500;
   }
   
@@ -516,7 +519,8 @@ body.dark .formDark {
 body.dark   input[type="text"],
 input[type="password"],
 input[type="submit"],
-input[type="mail"] {
+input[type="mail"],
+input[type="number"] {
     color: black;
 }
 
