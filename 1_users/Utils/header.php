@@ -1,6 +1,5 @@
 <?php
-
- if (session_status() != PHP_SESSION_ACTIVE) {
+if (session_status() != PHP_SESSION_ACTIVE) {
   session_start();
 } 
 // Vérifier si le temps de début de session est enregistré dans la variable $_SESSION
@@ -9,14 +8,14 @@ if (!isset($_SESSION['start_time'])) {
 }
 ?>
 <script>
-  // Récupération de l'heure de départ en JavaScript
-  let startTimestamp = Date.parse('<?php echo $_SESSION['start_time'] ?>');
+// Récupération de l'heure de départ en JavaScript
+let startTimestamp = Date.parse('<?php echo $_SESSION['start_time'] ?>');
 
-  // Vérification que startTimestamp est un nombre valide
-  if (isNaN(startTimestamp)) {
+// Vérification que startTimestamp est un nombre valide
+if (isNaN(startTimestamp)) {
     console.error('Invalid start time:', '<?php echo $_SESSION['start_time'] ?>');
     startTimestamp = Date.now(); // Utiliser l'heure actuelle si startTime est invalide
-  }
+}
 </script>
 
 <h1>Bibliothèque en ligne</h1>
@@ -53,62 +52,44 @@ if (!isset($_SESSION['start_time'])) {
     <option href="?controller=fournisseur&action=all_localite">Par localité</option>
     <option href="?controller=fournisseur&action=all_pays">Par pays</option>
   </select>
+  <select name="api" id="selectAcc3">
+    <option value="api">Recherche</option>
+    <option href="?controller=api&action=searchApi">Recherche par API</option>
+  </select>
 
 
 </div>
 
 <h2 id="title">Bienvenue sur le site de consultation de livres</h2>
 <script>
-  // Récupération de tous les select
-  const selects = document.querySelectorAll('select');
+// Récupération de l'heure de départ
+let startTime = Date.parse('<?php echo $_SESSION['start_time'] ?>');
+// Vérification que startTime est une date valide
+if (isNaN(startTimestamp)) {
+  console.error('Invalid start time:', startTime);
+  startTimestamp = Date.now(); // Utiliser l'heure actuelle si startTime est invalide
+}   
+// Fonction pour mettre à jour le compteur de temps
+function updateTimer() {
+  // Récupération du timestamp actuel en millisecondes
+  let now = Date.now();
+  // Calcul du temps écoulé depuis le début de la session en millisecondes
+  let elapsedTime = now - startTimestamp
+  // Calcul des heures écoulées
+  let hours = Math.floor(elapsedTime / 3600000);
+  // Calcul des minutes écoulées
+  let minutes = Math.floor((elapsedTime % 3600000) / 60000);
+  // Calcul des secondes écoulées
+  let seconds = Math.floor((elapsedTime % 60000) / 1000);
+  // Récupération de l'élément HTML pour afficher le timer
+  let timer = document.getElementById("timer");
+  // Formatage de l'affichage du timer
+  timer.innerHTML = hours + "H " + minutes + "M " + seconds + "s";
+  // Mise à jour du timer toutes les secondes
+  setTimeout(updateTimer, 1000);
+}
+// Lancement de la mise à jour du timer
+updateTimer();
 
-  // Ajout d'un écouteur d'événements pour chacun des select
-  selects.forEach(select => {
-    select.addEventListener('change', function() {
-      // Récupération de la valeur de l'option sélectionnée
-      const selectedOption = select.options[select.selectedIndex].getAttribute('href');
-
-      // Validation du choix de l'utilisateur
-      if (selectedOption) {
-        // Redirection vers l'URL de l'option sélectionnée
-        window.location.href = selectedOption;
-      }
-    });
-  });
-
-
-
-
-  // Récupération de l'heure de départ
-  let startTime = Date.parse('<?php echo $_SESSION['start_time'] ?>');
-
-  // Vérification que startTime est une date valide
-  if (isNaN(startTimestamp)) {
-    console.error('Invalid start time:', startTime);
-    startTimestamp = Date.now(); // Utiliser l'heure actuelle si startTime est invalide
-  }
-
-  // Fonction pour mettre à jour le compteur de temps
-  function updateTimer() {
-    // Récupération du timestamp actuel en millisecondes
-    let now = Date.now();
-    // Calcul du temps écoulé depuis le début de la session en millisecondes
-    let elapsedTime = now - startTimestamp
-    // Calcul des heures écoulées
-    let hours = Math.floor(elapsedTime / 3600000);
-    // Calcul des minutes écoulées
-    let minutes = Math.floor((elapsedTime % 3600000) / 60000);
-    // Calcul des secondes écoulées
-    let seconds = Math.floor((elapsedTime % 60000) / 1000);
-    // Récupération de l'élément HTML pour afficher le timer
-    let timer = document.getElementById("timer");
-    // Formatage de l'affichage du timer
-    timer.innerHTML = hours + "H " + minutes + "M " + seconds + "s";
-    // Mise à jour du timer toutes les secondes
-    setTimeout(updateTimer, 1000);
-  }
-
-  // Lancement de la mise à jour du timer
-  updateTimer();
 </script>
 </header>

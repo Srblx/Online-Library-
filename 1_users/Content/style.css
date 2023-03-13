@@ -14,6 +14,7 @@ html{
 	height: 100vh;
 	overflow-x: hidden;
   }
+  
   /* Styles pour centrer les éléments */
 fieldset {
 	background-color: rgba(0, 0, 0, 0.474);
@@ -457,7 +458,7 @@ footer {
 /* * Proprièté modifier lorsque la classe body est dark */
 Body.dark {
     color:#fff!important;
-    background: url(/2_users/Content/img/11.jpg) no-repeat center center fixed;
+    background: url(/1_users/Content/img/11.jpg) no-repeat center center fixed;
     background-size: cover;
   }
 

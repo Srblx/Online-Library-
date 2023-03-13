@@ -63,3 +63,25 @@ document.getElementById("formAdd").addEventListener("submit", function(event) {
 });
 
    
+
+ // Récupération de tous les select
+ const selects = document.querySelectorAll('select');
+
+ // Ajout d'un écouteur d'événements pour chacun des select
+ selects.forEach(select => {
+   select.addEventListener('change', function() {
+     // Récupération de la valeur de l'option sélectionnée
+     const selectedOption = select.options[select.selectedIndex].getAttribute('href');
+
+     // Validation du choix de l'utilisateur
+     if (selectedOption) {
+       // Redirection vers l'URL de l'option sélectionnée
+       window.location.href = selectedOption;
+     }
+   });
+ });
+
+
+
+
+
