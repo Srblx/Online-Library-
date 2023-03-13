@@ -2,7 +2,7 @@
     <fieldset>
         <legend>Recherche par titre de livre</legend>
         <select name="titre_com" id="titre_com">
-            <?php foreach ($titre_com as $t) : ?>
+            <?php foreach ($titre as $t) : ?>
                 <option value="<?= $t->id_livre ?>"><?= $t->titre ?></option>
             <?php endforeach ?>
             <input type="submit" value="Rechercher">

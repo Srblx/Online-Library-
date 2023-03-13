@@ -35,8 +35,8 @@ class Model
 
     public function get_connexion()
     {
-        $email = filter_var($_POST['mail'], FILTER_VALIDATE_EMAIL);
-        $password = filter_var($_POST['mdp'], FILTER_SANITIZE_STRING);
+        $email = filter_var(trim($_POST['mail'], FILTER_VALIDATE_EMAIL));
+        $password = filter_var(trim($_POST['mdp'], FILTER_SANITIZE_STRING));
 
         if (!$email) {
             // L'adresse e-mail n'est pas valide, renvoyer un message d'erreur
@@ -73,7 +73,7 @@ class Model
     public function get_insert_user()
     {
         // Récupérer les données du formulaire
-        $firstName = filter_var(trim($_POST['firstName']), FILTER_SANITIZE_STRING);
+        $firstName = filter_var(trim($_POST['firstName']));
         $lastName = filter_var(trim($_POST['lastName']), FILTER_SANITIZE_STRING);
         $mail = filter_var(trim($_POST['mail']), FILTER_VALIDATE_EMAIL);
         $mdp = filter_var(trim($_POST['mdp']), FILTER_SANITIZE_STRING);
@@ -101,4 +101,5 @@ class Model
         // Exécuter la requête
         $r->execute();
     }
+
 }

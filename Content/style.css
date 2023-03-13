@@ -1,6 +1,7 @@
 /* Couleur de fond de la page */
 body {
 	background: url(img/9.jpg);
+	box-sizing: border-box;
   }
   
   .bandeau {

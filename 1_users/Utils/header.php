@@ -1,6 +1,8 @@
 <?php
 
-
+ if (session_status() != PHP_SESSION_ACTIVE) {
+  session_start();
+} 
 // Vérifier si le temps de début de session est enregistré dans la variable $_SESSION
 if (!isset($_SESSION['start_time'])) {
   $_SESSION['start_time'] = date('Y-m-d H:i:s');

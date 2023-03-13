@@ -74,7 +74,7 @@ class Model
     public function get_all_localite_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $localite = htmlspecialchars($_POST['localite']);
+        $localite = htmlspecialchars(trim($_POST['localite']));
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE localite = :localite");
@@ -103,7 +103,7 @@ class Model
     public function get_all_pays_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $pays = htmlspecialchars($_POST['pays']);
+        $pays = htmlspecialchars(trim($_POST['pays']));
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE pays = :pays");
@@ -131,7 +131,7 @@ class Model
     public function get_all_titre_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $titre = htmlspecialchars($_POST['titre']);
+        $titre = htmlspecialchars(trim($_POST['titre']));
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $r = $this->bd->prepare("SELECT * FROM livre WHERE titre = :titre");
@@ -161,7 +161,7 @@ class Model
     public function get_all_auteur_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $auteur = htmlspecialchars($_POST['nomAuteur']);
+        $auteur = htmlspecialchars(trim($_POST['nomAuteur']));
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $r = $this->bd->prepare("SELECT * FROM livre WHERE nomAuteur = :auteur");
@@ -190,7 +190,7 @@ class Model
     public function get_all_editeur_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $editeur = htmlspecialchars($_POST['editeur']);
+        $editeur = htmlspecialchars(trim($_POST['editeur']));
 
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $r = $this->bd->prepare("SELECT * FROM livre WHERE editeur = :editeur");
@@ -219,7 +219,7 @@ class Model
     public function get_all_raison_social_list()
     {
         // Récupérer la valeur de localite choisie par l'utilisateur depuis le formulaire
-        $raison_social = htmlspecialchars($_POST['raison_social']);
+        $raison_social = htmlspecialchars(trim($_POST['raison_social']));
         //!L'erreur se produit car la requête SQL est interprétée comme si 'Marseille' était le nom de la colonne plutôt que la valeur de la colonne 'localite'. Cela peut se produire si la variable $localite dans la requête n'est pas correctement délimitée avec des guillemets simples ou doubles.
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $r = $this->bd->prepare("SELECT * FROM fornisseur WHERE raison_social = :raison_social");
@@ -233,17 +233,17 @@ class Model
 
     //!ADD LIVRE
     public function get_add_livre() {
-        $isbn = !empty($_POST['isbn']) ? htmlspecialchars($_POST['isbn']) : 0;
-        $titre = !empty($_POST['titre']) ? htmlspecialchars($_POST['titre']) : '';
-        $theme = !empty($_POST['theme']) ? htmlspecialchars($_POST['theme']) : 'undefined';
-        $nbPage = !empty($_POST['nbPage']) ? htmlspecialchars($_POST['nbPage']) : 0;
-        $format = !empty($_POST['format']) ? htmlspecialchars($_POST['format']) : 'undefined';
-        $nomAuteur = !empty($_POST['nomAuteur']) ? htmlspecialchars($_POST['nomAuteur']) : '';
-        $prenomAuteur = !empty($_POST['prenomAuteur']) ? htmlspecialchars($_POST['prenomAuteur']) : '';
-        $editeur = !empty($_POST['editeur']) ? htmlspecialchars($_POST['editeur']) : 'undefined';
-        $anneeEdition = !empty($_POST['anneeEdition']) ? htmlspecialchars($_POST['anneeEdition']) : '0000-00-00';
-        $prix = !empty($_POST['prix']) ? htmlspecialchars($_POST['prix']) : 0;
-        $langue = !empty($_POST['langue']) ? htmlspecialchars($_POST['langue']) : 'undefined';
+        $isbn = !empty($_POST['isbn']) ? htmlspecialchars(trim($_POST['isbn'])) : 0;
+        $titre = !empty($_POST['titre']) ? htmlspecialchars(trim($_POST['titre'])) : '';
+        $theme = !empty($_POST['theme']) ? htmlspecialchars(trim($_POST['theme'])) : 'undefined';
+        $nbPage = !empty($_POST['nbPage']) ? htmlspecialchars(trim($_POST['nbPage'])) : 0;
+        $format = !empty($_POST['format']) ? htmlspecialchars(trim($_POST['format'])) : 'undefined';
+        $nomAuteur = !empty($_POST['nomAuteur']) ? htmlspecialchars(trim($_POST['nomAuteur'])) : '';
+        $prenomAuteur = !empty($_POST['prenomAuteur']) ? htmlspecialchars(trim($_POST['prenomAuteur'])) : '';
+        $editeur = !empty($_POST['editeur']) ? htmlspecialchars(trim($_POST['editeur'])) : 'undefined';
+        $anneeEdition = !empty($_POST['anneeEdition']) ? htmlspecialchars(trim($_POST['anneeEdition'])) : '0000-00-00';
+        $prix = !empty($_POST['prix']) ? htmlspecialchars(trim($_POST['prix'])) : 0;
+        $langue = !empty($_POST['langue']) ? htmlspecialchars(trim($_POST['langue'])) : 'undefined';
     
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $stmt = $this->bd->prepare("INSERT INTO livre (isbn,titre,theme,nombreDePage,format,nomAuteur,PrenomAuteur,editeur,anneeEdition,prix,langue)
@@ -269,16 +269,16 @@ class Model
     // //! ADD FOURNISSEUR
     public function get_add_fournisseur()
     {
-        $codeFournisseur = htmlspecialchars($_POST['code_fournisseur']);
-        $raisonSociale = htmlspecialchars($_POST['raison_social']);
-        $rueFournisseur = htmlspecialchars($_POST['rue_fournisseur']);
-        $codePostal = htmlspecialchars($_POST['code_postal']);
-        $localite = htmlspecialchars($_POST['localite']);
-        $pays = htmlspecialchars($_POST['pays']);
-        $telFournisseur = htmlspecialchars($_POST['tel_fournisseur']);
-        $urlInternet = htmlspecialchars($_POST['url_fournisseur']);
-        $mailFournisseur = htmlspecialchars($_POST['mail_fournisseur']);
-        $faxFournisseur = htmlspecialchars($_POST['fax_fournisseur']);
+        $codeFournisseur = htmlspecialchars(trim($_POST['code_fournisseur']));
+        $raisonSociale = htmlspecialchars(trim($_POST['raison_social']));
+        $rueFournisseur = htmlspecialchars(trim($_POST['rue_fournisseur']));
+        $codePostal = htmlspecialchars(trim($_POST['code_postal']));
+        $localite = htmlspecialchars(trim($_POST['localite']));
+        $pays = htmlspecialchars(trim($_POST['pays']));
+        $telFournisseur = htmlspecialchars(trim($_POST['tel_fournisseur']));
+        $urlInternet = htmlspecialchars(trim($_POST['url_fournisseur']));
+        $mailFournisseur = htmlspecialchars(trim($_POST['mail_fournisseur']));
+        $faxFournisseur = htmlspecialchars(trim($_POST['fax_fournisseur']));
 
         $stmt = $this->bd->prepare("INSERT INTO fornisseur (code_fournisseur, raison_social, rue_fournisseur, code_postal, localite, pays, tel_fournisseur, url_fournisseur, mail_fournisseur, fax_fournisseur)
     VALUES (:codeFournisseur, :raisonSocial, :rueFournisseur, :codePostal, :localite, :pays, :telFournisseur, :urlInternet, :mailFournisseur, :faxFournisseur)");
@@ -310,18 +310,18 @@ class Model
     public function get_update_livre()
     {
         // Récupérer les données du formulaire
-        $id = htmlspecialchars($_POST['id']);
-        $isbn = htmlspecialchars($_POST['isbn']);
-        $titre = htmlspecialchars($_POST['titre']);
-        $theme = htmlspecialchars($_POST['theme']);
-        $nbPage = htmlspecialchars($_POST['nbPage']);
-        $format = htmlspecialchars($_POST['format']);
-        $nomAuteur = htmlspecialchars($_POST['nomAuteur']);
-        $prenomAuteur = htmlspecialchars($_POST['prenomAuteur']);
-        $editeur = htmlspecialchars($_POST['editeur']);
-        $anneeEdition = htmlspecialchars($_POST['anneeEdition']);
-        $prix = htmlspecialchars($_POST['prix']);
-        $langue = htmlspecialchars($_POST['langue']);
+        $id = htmlspecialchars(trim($_POST['id']));
+        $isbn = htmlspecialchars(trim($_POST['isbn']));
+        $titre = htmlspecialchars(trim($_POST['titre']));
+        $theme = htmlspecialchars(trim($_POST['theme']));
+        $nbPage = htmlspecialchars(trim($_POST['nbPage']));
+        $format = htmlspecialchars(trim($_POST['format']));
+        $nomAuteur = htmlspecialchars(trim($_POST['nomAuteur']));
+        $prenomAuteur = htmlspecialchars(trim($_POST['prenomAuteur']));
+        $editeur = htmlspecialchars(trim($_POST['editeur']));
+        $anneeEdition = htmlspecialchars(trim($_POST['anneeEdition']));
+        $prix = htmlspecialchars(trim($_POST['prix']));
+        $langue = htmlspecialchars(trim($_POST['langue']));
 
         // Mettre à jour les données dans la base de données
         $stmt = $this->bd->prepare("UPDATE livre SET isbn=:isbn, titre=:titre, theme=:theme, nombreDePage=:nbPage, format=:format, nomAuteur=:nomAuteur, prenomAuteur=:prenomAuteur, editeur=:editeur, anneeEdition=:anneeEdition, prix=:prix, langue=:langue WHERE id=:id");

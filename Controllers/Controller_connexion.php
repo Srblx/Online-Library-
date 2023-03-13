@@ -47,9 +47,9 @@ class Controller_connexion extends Controller
                 $_SESSION['prenom'] = $prenom;
                 $_SESSION['est_administrateur'] = $est_administrateur;
                 if ($_SESSION['est_administrateur'] === 1) {
-                    header('Location: 3_admin/?controller=home&action=home');
+                    header('Location: 2_admin/?controller=home&action=home');
                 } else {
-                    header('Location: 2_users/?controller=home&action=home');
+                    header('Location: 1_users/?controller=home&action=home');
                     exit();
                 }
                 if (!$user) {

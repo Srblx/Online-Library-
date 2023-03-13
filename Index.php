@@ -20,6 +20,7 @@
 <body>
     <?php if (session_status() != PHP_SESSION_ACTIVE) {
         session_start();
+        
     } ?>
     <!--//! Voir le fichier exel Samy/CourSurMVC/Exel -->
     <?php
