@@ -232,7 +232,8 @@ class Model
     }
 
     //!ADD LIVRE
-    public function get_add_livre() {
+    public function get_add_livre()
+    {
         $isbn = !empty($_POST['isbn']) ? htmlspecialchars(trim($_POST['isbn'])) : 0;
         $titre = !empty($_POST['titre']) ? htmlspecialchars(trim($_POST['titre'])) : '';
         $theme = !empty($_POST['theme']) ? htmlspecialchars(trim($_POST['theme'])) : 'undefined';
@@ -244,11 +245,11 @@ class Model
         $anneeEdition = !empty($_POST['anneeEdition']) ? htmlspecialchars(trim($_POST['anneeEdition'])) : '0000-00-00';
         $prix = !empty($_POST['prix']) ? htmlspecialchars(trim($_POST['prix'])) : 0;
         $langue = !empty($_POST['langue']) ? htmlspecialchars(trim($_POST['langue'])) : 'undefined';
-    
+
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $stmt = $this->bd->prepare("INSERT INTO livre (isbn,titre,theme,nombreDePage,format,nomAuteur,PrenomAuteur,editeur,anneeEdition,prix,langue)
             VALUES (:isbn, :titre, :theme, :nbPage, :format, :nomAuteur, :prenomAuteur, :editeur, :anneeEdition, :prix, :langue)");
-    
+
         // Lier les variables aux marqueurs
         $stmt->bindParam(":isbn", $isbn);
         $stmt->bindParam(":titre", $titre);
@@ -261,7 +262,7 @@ class Model
         $stmt->bindParam(":anneeEdition", $anneeEdition);
         $stmt->bindParam(":prix", $prix);
         $stmt->bindParam(":langue", $langue);
-    
+
         // Exécuter la requête
         $stmt->execute();
     }
@@ -483,13 +484,22 @@ class Model
         // Vérifier si le formulaire a été soumis
         if (isset($_POST['submit'])) {
 
-
-            // Insérer les valeurs dans la base de données
+            // Préparer la requête avec des paramètres sous forme de marqueurs de paramètres
             $r = $this->bd->prepare("INSERT INTO commande (id_livre, id_fournisseur, date_achat, prix_achat, nb_exemplaire) 
-            VALUES ($id_livre,$id_fournisseur,$date,$prix,$qte)");
+            VALUES (:id_livre, :id_fournisseur, :date_achat, :prix_achat, :nb_exemplaire)");
 
-            return $r->execute();
+            // Lier les valeurs des paramètres à la requête SQL
+            $r->bindParam(':id_livre', $id_livre);
+            $r->bindParam(':id_fournisseur', $id_fournisseur);
+            $r->bindParam(':date_achat', $date);
+            $r->bindParam(':prix_achat', $prix);
+            $r->bindParam(':nb_exemplaire', $qte);
 
+            // Exécuter la requête
+            $result = $r->execute();
+
+            // Retourner le résultat de l'exécution de la requête
+            return $result;
 
             // Rediriger vers la page de liste des commandes
             // header("Location: ?controller=commande&action=all_commande");
