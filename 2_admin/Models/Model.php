@@ -391,8 +391,8 @@ class Model
         // Préparer la requête SQL en utilisant une variable liée pour éviter les attaques par injection SQL
         $r = $this->bd->prepare("SELECT * FROM commande c 
         INNER JOIN livre l ON c.id_livre = l.id
-        INNER JOIN fornisseur f ON c.id_fournisseur = f.id WHERE date_achat = '$date'");
-        // $r->bindValue(':localite', $localite, PDO::PARAM_STR);
+        INNER JOIN fornisseur f ON c.id_fournisseur = f.id WHERE date_achat = :dateA");
+        $r->bindValue(':dateA', $date, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
@@ -417,8 +417,8 @@ class Model
         $r = $this->bd->prepare("SELECT c.prix_achat,c.date_achat,c.numero_commande,c.nb_exemplaire,f.raison_social,l.titre,l.nomAuteur
         ,l.isbn FROM commande c
         INNER join livre l ON c.id_livre = l.id 
-        INNER JOIN fornisseur f ON c.id_fournisseur = f.id WHERE c.id_fournisseur = $id ");
-        // $r->bindValue(':idFourn', $idFourn, PDO::PARAM_STR);
+        INNER JOIN fornisseur f ON c.id_fournisseur = f.id WHERE c.id_fournisseur = :id ");
+        $r->bindValue(':id', $id, PDO::PARAM_STR);
         $r->execute();
 
         return $r->fetchAll(PDO::FETCH_OBJ);
@@ -444,7 +444,8 @@ class Model
         $r = $this->bd->prepare("SELECT c.prix_achat,c.date_achat,c.numero_commande,c.nb_exemplaire,f.raison_social,l.titre,l.nomAuteur,l.isbn 
         FROM commande c
         INNER join livre l ON c.id_livre = l.id 
-        INNER JOIN fornisseur f ON c.id_fournisseur = f.id WHERE c.id_livre = $id ");
+        INNER JOIN fornisseur f ON c.id_fournisseur = f.id WHERE c.id_livre = :id ");
+        $r->bindValue(':id', $id, PDO::PARAM_STR);
 
         // Exécuter la requête
         $r->execute();
