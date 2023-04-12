@@ -1,0 +1,19 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Controllers"
+		},
+		{
+			"path": "../Models"
+		},
+		{
+			"path": "../Utils"
+		},
+		{
+			"path": "../Views"
+		}
+	]
+}

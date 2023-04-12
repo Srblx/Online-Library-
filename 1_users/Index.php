@@ -22,11 +22,11 @@
 </head>
 
 <body>
-  <?php 
-  //* Test si la session est deja start ou non et permet de mettre deux session start sur un meme affichage sans erreur. 
-  if (session_status() != PHP_SESSION_ACTIVE) {
+    <?php
+    //* Test si la session est deja start ou non et permet de mettre deux session start sur un meme affichage sans erreur. 
+    if (session_status() != PHP_SESSION_ACTIVE) {
         session_start();
-       // var_dump($_SESSION);
+        // var_dump($_SESSION);
     }  ?>
     <!--//! Voir le fichier exel Samy/CourSurMVC/Exel -->
     <?php

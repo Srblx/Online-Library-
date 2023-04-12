@@ -97,7 +97,7 @@ class Controller_commande extends Controller
         $qte = $_POST["qte"];
         // var_dump($date);
 
-        // $data = ["test" => $m->get_add_commande($id_livre, $id_fournisseur, $date, $prix, $qte)];
+        $data = ["test" => $m->get_add_commande($id_livre, $id_fournisseur, $date, $prix, $qte)];
         // $this->render('all_commande');
         // $this->render('all_commande');
     }
