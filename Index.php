@@ -63,9 +63,9 @@
         exit(trigger_error("Error 404 : not found", E_USER_ERROR));
     }
 
-    //* Inclure le fichier de pied de page
     // echo "<b id='controller'>" . "Controller : " . $_GET['controller'] . "<br>" . "<b>";
     // echo "<b id='action'>" . "action : " . $_GET['action'] . "<br>" . "<body>";
+    //* Inclure le fichier de pied de page
     require_once 'Utils/footer.php';
     ?>
 </body>

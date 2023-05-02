@@ -23,7 +23,7 @@ class Controller_home extends Controller
 	// Destruction de la session
 	session_destroy();
 
-		$this->render("home");
+	$this->render("home");
 	}
 
 	public function action_sign_up()

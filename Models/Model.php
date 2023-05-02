@@ -82,7 +82,7 @@ class Model
         $r = $this->bd->prepare("SELECT COUNT(*) FROM `user` WHERE `mail` = :email");
         $r->bindParam(':email', $mail);
         $r->execute();
-        $result = $r->fetchColumn();
+    $result = $r->fetchColumn();
         if ($result > 0) {
             // L'adresse e-mail existe déjà dans la base de données, renvoyer un message d'erreur
             echo "<script>alert('Cette adresse e-mail est déjà utilisée.');</script>";
