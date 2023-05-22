@@ -26,6 +26,11 @@ fieldset {
 	padding: 20%;
 	
 }
+
+.fa-solid {
+	position: relative;
+    left: 39%;
+}
   
   /* Styles pour les boutons */  
   .btn {
@@ -227,6 +232,9 @@ fieldset {
 	display: block;
 	transition: all 0.5s;
 	font-weight: 500;
+	text-decoration: none;
+    color: grey;
+    margin-top: 10px;
   }
   
   #deco:hover {
